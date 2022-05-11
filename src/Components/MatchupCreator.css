@@ -1,0 +1,57 @@
+
+#matchup{
+  text-align: center;
+  padding-top: 10px;
+  background-image: url(https://preview.redd.it/l9saxgjap9p41.jpg?auto=webp&s=c492df1077d7bc2f66b6c863e2b6bed7d2d7cd06);
+  margin-left: auto;
+  margin-right: auto;
+  width: 1600px;
+  height: 1000px;
+  display: block;
+}
+.fighter1{
+  display: inline-block;
+  -webkit-mask: linear-gradient(-90deg, rgba(0,0,0,0) 20%, rgba(0,0,0,1) 50%);
+}
+.fighter1 img{
+  width: 30rem;
+  height: 30rem;
+}
+
+
+.fighter2{
+  display: inline-block;
+  -webkit-mask: linear-gradient(90deg, rgba(0,0,0,0) 20%, rgba(0,0,0,1) 50%);
+}
+.fighter2 img{
+  display: inline-block;
+  width: 30rem;
+  height: 30rem;
+}
+.statcard{
+  width: 380px;
+  background-color: #2e2e2e;
+  padding-bottom: 50px;
+}
+.statline{
+  color: white;
+  background-color: #494949;
+  padding-top: 34px;
+  padding-bottom: 34px;
+  margin: 14px;
+  height: 32px;
+}
+.center-text{
+  color: rgba(255, 255, 255, 0.555);
+  height: 10px;
+}
+.stats{
+  display: inline-block;
+  width: fit-content;
+  margin-top: 248px;
+}
+.fighters img{
+  height: 150px;
+  width: 200px;
+  border-radius: 100px;
+}
