@@ -1,10 +1,10 @@
 import React from 'react'
 import MatchupCard from './MatchupCard'
 
-function Matchups({matches}) {
+function Matchups({matches, handlesetMatches}) {
 
   const renderMatches = () => {
-    return matches.map(match => <MatchupCard key={match.id} match={match} />)
+    return matches.map(match => <MatchupCard key={match.id} match={match} matches={matches} handlesetMatches={handlesetMatches}/>)
   }
 
   return (

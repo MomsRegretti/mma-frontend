@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import './MatchupCreator.css'
 
-
-function MatchupCreator({fighters, setMatches}) {
+function MatchupCreator({fighters, handlesetMatches}) {
   const[fighter1, setFighter1] = useState(null)
   const[fighter2, setFighter2] = useState(null)
   const[division, setDivision] = useState(0)
@@ -47,7 +46,7 @@ function MatchupCreator({fighters, setMatches}) {
         .then(r => r.json())
     fetch('http://localhost:9292/savedmatchups')
       .then(r => r.json())
-      .then(data => setMatches(data))
+      .then(data => handlesetMatches(data))
       }
 
   return (
