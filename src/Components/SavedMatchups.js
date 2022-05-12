@@ -1,14 +1,7 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import MatchupCard from './MatchupCard'
 
-function Matchups() {
-  const[matches, setMatches] = useState([])
-
-  useEffect(() => {
-    fetch('http://localhost:9292/savedmatchups')
-    .then(r => r.json())
-    .then(data => setMatches(data))
-  }, [])
+function Matchups({matches}) {
 
   const renderMatches = () => {
     return matches.map(match => <MatchupCard key={match.id} match={match} />)
@@ -16,7 +9,7 @@ function Matchups() {
 
   return (
     <div className='matchups'>
-      <h1>matchups</h1>
+      <h1 style={{'color':'white'}}>Your Saved Matchups!</h1>
       {renderMatches()}
     </div>
   )
