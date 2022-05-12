@@ -84,6 +84,17 @@ filter: none;
   margin-left: 20px;
   margin-right: 20px;
 }
+.button1 {
+  color: rgb(0, 0, 0);
+  border-radius: 4px;
+  border: 2px solid white;
+  background-image: linear-gradient(to top, #d41515, #da4141);
+  font-family: 'Permanent Marker', 'cursive';
+  font-size: large;
+  padding: 12px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
 .fighter1{
   display: inline-block;
   border-radius: 16px;
