@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
+import { Link } from 'react-router-dom'
 import './MatchupCreator.css'
 
-function MatchupCreator({fighters, handlesetMatches}) {
+function MatchupCreator({fighters, divisionid, handleDivisionChange, divisionFighters, handlesetMatches}) {
   const[fighter1, setFighter1] = useState(null)
   const[fighter2, setFighter2] = useState(null)
-  const[division, setDivision] = useState(0)
-  const[divisionFighters, setDivisionFighters] = useState([])
+
 
   const selectFighter = (fighter) => {
     if(fighter1 === null) {
@@ -18,12 +18,9 @@ function MatchupCreator({fighters, handlesetMatches}) {
       alert("Fighters have been chosen! Reset your fighters before making another selection.")
     }
   }
-  
-  useEffect(() => {
-    fetch(`http://localhost:9292/divisions/${division}`)
-    .then(r => r.json())
-    .then(data => setDivisionFighters(data.fighters))
-  },[division])
+  const handleClick = (e) => {
+    handleDivisionChange(e.target.id)
+  }
 
   const handleReset = () => {
     setFighter1(null)
@@ -44,8 +41,6 @@ function MatchupCreator({fighters, handlesetMatches}) {
           })
         })
         .then(r => r.json())
-    fetch('http://localhost:9292/savedmatchups')
-      .then(r => r.json())
       .then(data => handlesetMatches(data))
       }
 
@@ -65,7 +60,7 @@ function MatchupCreator({fighters, handlesetMatches}) {
             <h2 className='statline'>{fighter1? fighter1.wld : null} <span className='center-text'>Record</span> {fighter2? fighter2.wld : null}</h2>
             <br></br>
             <br></br>
-            <button onClick={handleSave} className="button">Save Matchup</button><button onClick={handleReset} className="button">Reset Fighters</button>
+            <Link to='/savedmatchups'><button onClick={handleSave} className="button">Save Matchup</button></Link><button onClick={handleReset} className="button">Reset Fighters</button>
           </div>
         </div>
         <div className='fighter2'>
@@ -74,10 +69,10 @@ function MatchupCreator({fighters, handlesetMatches}) {
         </div>
       </div>
       <ul className='divisions'>
-        <button className='button' onClick={(e) => setDivision(e.target.id)} id='0'>Women's Strawweight</button>
-        <button className='button' onClick={(e) => setDivision(e.target.id)} id='1'>Women's Bantamweight</button>
-        <button className='button' onClick={(e) => setDivision(e.target.id)} id='2'>Men's Welterweight</button>
-        <button className='button' onClick={(e) => setDivision(e.target.id)} id='3'>Men's Lightweight</button>
+        <button className='button' onClick={(e) => handleClick(e)} id='0'>Women's Strawweight</button>
+        <button className='button' onClick={(e) => handleClick(e)} id='1'>Women's Bantamweight</button>
+        <button className='button' onClick={(e) => handleClick(e)} id='2'>Men's Welterweight</button>
+        <button className='button' onClick={(e) => handleClick(e)} id='3'>Men's Lightweight</button>
       </ul>
       <div className='fighters'>
         <h1 style={{'padding' : '10px'}}>Choose Your Fighter:</h1>

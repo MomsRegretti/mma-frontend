@@ -1,14 +1,13 @@
 import React from 'react'
 
-function MatchupCard({match, handlesetMatches}) {
+function MatchupCard({match, handleDeleteMatch, updateMatches}) {
 
 const handleDelete = () => {
   fetch(`http://localhost:9292/savedmatchups/${match.id}`,{
     method: 'DELETE'
   })
-  .then(()=>fetch("http://localhost:9292/savedmatchups")
     .then(r=>r.json())
-    .then(data=>handlesetMatches(data)))
+    .then(data=>handleDeleteMatch(data))
 }
 const handleUpdate = () =>{
   const newfighter1 = match.fighter2
@@ -17,21 +16,21 @@ const handleUpdate = () =>{
   const newfighter2_img = match.fighter1_img
   fetch(`http://localhost:9292/savedmatchups/${match.id}`,{
     method: 'PATCH',
-    body: JSON.stringify({
-      fighter1: newfighter1,
-      fighter1_img : newfighter1_img,
-      fighter2 : newfighter2,
-      fighter2_img : newfighter2_img
-    }),
     headers: {
       'Content-type': "application/json"
-    }
+    },
+    body: JSON.stringify({
+      fighter1: newfighter1,
+      fighter1_img: newfighter1_img,
+      fighter2: newfighter2,
+      fighter2_img: newfighter2_img
+    }),
   })
   .then(r=> r.json())
-  .then(data=>handlesetMatches(data))
+  .then(data=>updateMatches(data))
 }
   return (
-    <div>
+    <div className='ye'>
       <div className='matchupCard'>
         <img src={match.fighter1_img} alt='fighter1' />
         <img style={{'transform': 'scaleX(-1)'}} src={match.fighter2_img} alt='fighter2' />
